@@ -30,9 +30,11 @@ function NewData(props) {
   return (
     <>
         <article key="" className='person'>
-            <img src= {(!img)? (inputImg)? "https://media1.giphy.com/media/6036p0cTnjUrNFpAlr/giphy.gif?cid=ecf05e477bzxtitvn8r00nl2qvm69oadjg526d0wgalf1q54&rid=giphy.gif&ct=g" 
-                                : "https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg"
-                                : img} alt= " " />
+            <img src= {(!img)?
+                        (inputImg)? 
+                            inputImg
+                            : "https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg"
+                            : img} alt= " " />
         <div>
             <h4>{(newName)? newName : "Mr X"}</h4>
             <p>{(newAge)? newAge : 0} years</p>
@@ -40,7 +42,7 @@ function NewData(props) {
         </article>
             <form  onSubmit={handleSubmit}>
                 <input className='name' type="text" placeholder='name' defaultValue={newName} onChange={(e)=>{
-                    if((e.target.value)){
+                    if((e.target.value) && (e.target.value).length <21){
                         setNewName(e.target.value)
                     }
                     else{
