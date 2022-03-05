@@ -18,6 +18,7 @@ useEffect(()=>{
   if(newEntry){
     setPeople([...people,newEntry]);
   }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[newEntry])
 
   return (
@@ -25,7 +26,7 @@ useEffect(()=>{
       <section className='container'>
         <div>{day}, {date} {month} {year}</div>
         <h3>{people.length}  Birthdays Today</h3>
-        <List people={people} />
+        {!addClikced && <List people={people} />}
         {addClikced && peopeleAdded && <NewData onChildData ={getNewData} setAddClikced={setAddClikced} setpeopleAdded ={setpeopleAdded}/>}
         {!addClikced &&  <button onClick={() => setPeople([])}>clear all</button>}
         {! addClikced && <button onClick={()=> {setAddClikced(true); setpeopleAdded(true)}}>add new</button>}
